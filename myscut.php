@@ -1,11 +1,14 @@
 <?php
 header("Content-Type: text/html; charset=gb2312");
+
+
 class curl{
 	public $ID;
 	public $pass;
 	public $user;
 	public $num;  //$num为班级人数
 	public $pm; //排名
+	public $gittext;
 	public $loginyes=0; //是否登录成功  1为登录成功；
 
 	public function __construct($user , $pass , $School_ID ){
