@@ -4,10 +4,10 @@ class curl{
 	public $ID;
 	public $pass;
 	public $user;
-	public $num;  
+	public $num;
 	public $pm; //排名
 	public $loginyes=0; //是否登录成功  1为登录成功；
-
+	public $chang;
 	public function __construct($user , $pass , $School_ID ){
 		$this->user = $user;
 		$this->pass = $pass;
@@ -25,7 +25,7 @@ class curl{
 		$login_url = 'https://security.scut.edu.cn:443/cas/login';
 		//$cacert = getcwd();http://cwis.scut.edu.cn:9980/student/student/grade/flow_main.htm
 		//$CA = true;https://security.scut.edu.cn/cas/login
-		
+
 		//$SSL = substr($url, 0, 8) == "https://" ? true : false;
 		$curl = curl_init($login_url);
 
@@ -47,7 +47,7 @@ class curl{
 		curl_close($curl);
 
 		$b=preg_match('/<font color="red">(.*)<\/font>/U',$data,$arr);
-		
+
 		if($b){
 
 			$this->loginyes = 0;
@@ -146,7 +146,7 @@ class curl{
 		}
 
 
-		
+
 	}
 
 
@@ -156,7 +156,7 @@ class curl{
 		$grade = array();  ///$grade 为获取的分数
 		$arr_zz =$this->Catch_ff();
 		foreach ($arr_zz as $arr){
-			
+
 
 			if(preg_match("/<a href=\"grade_info.jsp\?studentID=$School_ID\&academicYear=$xueqi\" target=\"_blank\">(.*)<\/a>/U",$arr,$gr)){
 				$this->pm = $n;
@@ -189,5 +189,3 @@ class curl{
 
 
 ?>
-
- 
